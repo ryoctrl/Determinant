@@ -20,25 +20,30 @@ public class Determinant {
 	public double calcDeterminant(){
 		printMatrix();
 		System.out.println("\n");
-		for(int i = 0; i < matrix.length; i++){
-			if(i == matrix.length -1){
+		for(int currentRow = 0; currentRow < matrix.length; currentRow++){
+			if(currentRow == matrix.length -1){
 				break;
 			}
 			
-			for(int j = 0; j < matrix[i].length; j++){
-				double[] tmpRow = matrix[i];
-				double seed = matrix[i+1][i]/matrix[i][i];
+			for(int calcRow = currentRow + 1; calcRow < matrix.length; calcRow++){
+				double[] tmpRow = matrix[currentRow];
+				double seed = matrix[calcRow][currentRow]/matrix[currentRow][currentRow];
 				
-				matrix[i+1][j] -= tmpRow[j] * seed;
+				for(int column = 0; column < matrix[calcRow].length; column++){
+					matrix[calcRow][column] -= tmpRow[column] * seed;
+				}
 			}
+			printMatrix();
+			System.out.println("\n");
 		}
-		/*
+		
 		double ans = 1;
 		for(int i = 0; i < matrix.length; i++){
 			ans *= matrix[i][i];
-		}*/
-		printMatrix();
-		double ans = 0;
+		}
+		//printMatrix();
+	
+		//double ans = 0;
 		return ans;
 	}
 	
