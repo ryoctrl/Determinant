@@ -18,8 +18,8 @@ public class Determinant {
 	}
 	
 	public double calcDeterminant(){
-		printMatrix();
-		System.out.println("\n");
+		//printMatrix();
+		//System.out.println("\n");
 		for(int currentRow = 0; currentRow < matrix.length; currentRow++){
 			if(currentRow == matrix.length -1){
 				break;
@@ -33,8 +33,8 @@ public class Determinant {
 					matrix[calcRow][column] -= tmpRow[column] * seed;
 				}
 			}
-			printMatrix();
-			System.out.println("\n");
+			//printMatrix();
+			//System.out.println("\n");
 		}
 		
 		double ans = 1;
@@ -43,7 +43,6 @@ public class Determinant {
 		}
 		//printMatrix();
 	
-		//double ans = 0;
 		return ans;
 	}
 	
@@ -57,6 +56,9 @@ public class Determinant {
 		
 		Determinant d = new Determinant(matrix);
 		
+		System.out.println("表現行列A = ");
+		d.printMatrix();
+		System.out.print("の行列式:");
 		System.out.print(d.calcDeterminant());
 	}
 }
